@@ -2,9 +2,11 @@
 Generate a complete tileset from a compressed one
 
 Tileset-Generator convert tileset like this:
+
 ![compreseg](https://github.com/NickFlexer/Tileset-Generator/blob/master/input_img.png?raw=true)
 
 to tileset like this:
+
 ![complete](https://github.com/NickFlexer/Tileset-Generator/blob/master/output_img.png?raw=true)
 
 ## How to use
