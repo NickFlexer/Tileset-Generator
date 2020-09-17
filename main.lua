@@ -6,20 +6,21 @@ package.path = package.path .. ";lib/?/init.lua;lib/?.lua;src/?.lua"
 
 
 local argparse = require "argparse"
-local suit = require "suit"
 
 
 local img
 local tile_width, tile_height
 local quads = {}
 local canvas
-local filename = {text = "tileset"}
+local args
+local is_draw = false
 
 
 function love.load(arg)
-    local parser = argparse("script", "An example.")
-    parser:argument("input", "Input image file.")
-    local args = parser:parse(arg)
+    local parser = argparse("love .", "Generate a complete tileset from a compressed one")
+    parser:argument("input", "Input image file. Example input_tileset.png")
+    parser:argument("output", "Output image file. Example output_tileset.png")
+    args = parser:parse(arg)
 
     assert(love.filesystem.getInfo(args.input), "File " .. args.input .. " does not exist!")
     img = love.graphics.newImage(args.input)
@@ -116,18 +117,15 @@ function love.load(arg)
             end
         end
     )
-
-    print(love.filesystem.getWorkingDirectory())
 end
 
 
 function love.update(dt)
-    suit.layout:reset(love.graphics.getWidth() - 128, love.graphics.getHeight() - 32 * 2)
+    if is_draw then
+        local filedata = canvas:newImageData():encode("png")
+        love.filesystem.write(args.output, filedata)
 
-    suit.Input(filename, suit.layout:row(128, 32))
-
-    if suit.Button("Save image", suit.layout:row(128, 32)).hit then
-        canvas:newImageData():encode("png", filename.text .. ".png")
+        love.event.quit()
     end
 end
 
@@ -136,25 +134,7 @@ function love.draw()
     love.graphics.setColor(1, 1, 1);
     love.graphics.draw(canvas);
 
-    suit.draw()
-end
-
-
-function love.textedited(text, start, length)
-    -- for IME input
-    suit.textedited(text, start, length)
-end
-
-
-function love.textinput(t)
-	-- forward text input to SUIT
-	suit.textinput(t)
-end
-
-
-function love.keypressed(key)
-	-- forward keypresses to SUIT
-	suit.keypressed(key)
+    is_draw = true
 end
 
 

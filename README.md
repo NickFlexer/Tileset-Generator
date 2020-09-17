@@ -2,7 +2,6 @@
 generate a complete tileset from a compressed one
 
 
-## dependencies
+## Dependencies
 
 * [argparse](https://github.com/mpeterv/argparse)
-* [suit](https://github.com/vrld/suit)
