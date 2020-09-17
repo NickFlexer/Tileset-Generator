@@ -2,6 +2,7 @@
 Generate a complete tileset from a compressed one
 
 It uses [LÖVE](https://love2d.org/) for image manipulation
+
 Tileset-Generator convert tileset like this:
 
 ![compreseg](https://github.com/NickFlexer/Tileset-Generator/blob/master/input_img.png?raw=true)
