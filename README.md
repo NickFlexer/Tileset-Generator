@@ -5,7 +5,7 @@ Tileset-Generator convert tileset like this:
 
 ![compreseg](https://github.com/NickFlexer/Tileset-Generator/blob/master/input_img.png?raw=true)
 
-to tileset like this:
+To tileset like this:
 
 ![complete](https://github.com/NickFlexer/Tileset-Generator/blob/master/output_img.png?raw=true)
 
@@ -13,7 +13,7 @@ to tileset like this:
 * put compressed tileset image to source folder
 * run
 ```love . input_img.png ounput_img.png```
-* grab complite tileset from LOVE [write directory](https://love2d.org/wiki/love.filesystem) 
+* grab complite tileset from LÖVE [write directory](https://love2d.org/wiki/love.filesystem) 
 * enjoy
 
 
